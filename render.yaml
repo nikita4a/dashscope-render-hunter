@@ -1,0 +1,16 @@
+# Render Blueprint — DashScope Key Hunter worker
+services:
+  - type: worker
+    name: dashscope-hunter
+    runtime: python
+    buildCommand: echo "no deps"
+    startCommand: python render_hunter.py
+    envVars:
+      - key: REST_SEC
+        value: "300"
+      - key: PAGES
+        value: "5"
+    disk:
+      name: hunter-data
+      mountPath: /var/data
+      sizeGB: 1
